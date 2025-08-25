@@ -8,34 +8,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .animate-bounce-slow {
-      animation: bounce 2s infinite;
-    }
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-    .custom-shadow {
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-    .gradient-bg {
-      background: linear-gradient(135deg, #f3f5ff 0%, #999999 100%);
-    }
-    .input-focus:focus {
-      box-shadow: 0 0 0 3px rgba(18, 140, 126, 0.2);
-    }
+    .animate-bounce-slow { animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,100% {transform:translateY(0);}50%{transform:translateY(-10px);} }
+    .custom-shadow { box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+    .gradient-bg { background: linear-gradient(135deg, #f3f5ff 0%, #999999 100%); }
+    .input-focus:focus { box-shadow: 0 0 0 3px rgba(18,140,126,0.2); }
   </style>
 </head>
 <body class="gradient-bg min-h-screen font-['Poppins'] p-4 md:p-10">
   <div class="max-w-2xl mx-auto bg-white rounded-2xl overflow-hidden custom-shadow">
-    <!-- Header with animated icon -->
     <header class="bg-emerald-600 text-white p-8 text-center relative overflow-hidden">
-      <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-emerald-500 opacity-20"></div>
-      <div class="absolute -bottom-8 -left-8 w-40 h-40 rounded-full bg-emerald-400 opacity-20"></div>
       <div class="relative z-10">
         <div class="animate-bounce-slow inline-block mb-4">
           <i class="fas fa-box-open text-5xl"></i>
@@ -45,243 +27,105 @@
       </div>
     </header>
 
-    <!-- Progress steps -->
-    <div class="flex justify-between items-center px-8 py-4 bg-gray-50 border-b">
-      <div class="flex items-center">
-        <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">1</div>
-        <span class="ml-2 font-medium text-emerald-600">Information</span>
-      </div>
-      <div class="h-1 flex-1 mx-2 bg-gray-200">
-        <div class="h-full bg-emerald-200 w-0" id="progressBar"></div>
-      </div>
-      <div class="flex items-center">
-        <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold">2</div>
-        <span class="ml-2 font-medium text-gray-500">Confirmation</span>
-      </div>
-    </div>
-
-    <!-- Form content -->
     <div class="p-6 md:p-8">
       <form id="orderForm">
-        <!-- Customer Info -->
+        <!-- Infos client -->
         <div class="mb-6">
-          <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-            <i class="fas fa-user-circle mr-2 text-emerald-600"></i> Vos informations
-          </h2>
+          <h2 class="text-xl font-semibold text-gray-800 mb-4"><i class="fas fa-user-circle mr-2 text-emerald-600"></i> Vos informations</h2>
           <div class="grid md:grid-cols-2 gap-4">
             <div>
-              <label for="customer" class="block text-gray-700 font-medium mb-2">Nom complet *</label>
-              <div class="relative">
-                <input type="text" id="customer" required 
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 focus:outline-none input-focus transition"
-                  placeholder="Ex: Ahmed Belkacem">
-                <i class="fas fa-user absolute right-3 top-3.5 text-gray-400"></i>
-              </div>
+              <label for="customer" class="block text-gray-700 mb-2">Nom complet *</label>
+              <input type="text" id="customer" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 input-focus" placeholder="Ex: Ahmed Belkacem">
             </div>
             <div>
-              <label for="phone" class="block text-gray-700 font-medium mb-2">Téléphone *</label>
-              <div class="relative">
-                <input type="tel" id="phone" required 
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 focus:outline-none input-focus transition"
-                  placeholder="Ex: 0555 57 03 18">
-                <i class="fas fa-phone absolute right-3 top-3.5 text-gray-400"></i>
-              </div>
+              <label for="phone" class="block text-gray-700 mb-2">Téléphone *</label>
+              <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 input-focus" placeholder="0555 57 03 18">
             </div>
           </div>
         </div>
 
-        <!-- Order Details -->
+        <!-- Produit -->
         <div class="mb-6">
-          <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-            <i class="fas fa-shopping-cart mr-2 text-emerald-600"></i> Détails de la commande
-          </h2>
+          <h2 class="text-xl font-semibold text-gray-800 mb-4"><i class="fas fa-shopping-cart mr-2 text-emerald-600"></i> Détails de la commande</h2>
           <div class="grid md:grid-cols-2 gap-4">
             <div>
-              <label for="product" class="block text-gray-700 font-medium mb-2">Produit *</label>
-              <div class="relative">
-                <select id="product" required 
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 focus:outline-none input-focus appearance-none transition">
-                  <option value="">Sélectionner un produit</option>
-                  <option value="Chaise en bois">Chaise en bois</option>
-                  <option value="Table pliante">Table pliante</option>
-                  <option value="Étagère métallique">Étagère métallique</option>
-                  <option value="Autre">Autre (préciser)</option>
-                </select>
-                <i class="fas fa-chevron-down absolute right-3 top-3.5 text-gray-400 pointer-events-none"></i>
-              </div>
+              <label for="product" class="block text-gray-700 mb-2">Produit *</label>
+              <select id="product" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 input-focus">
+                <option value="">Sélectionner un produit</option>
+                <option value="Chaise en bois">Chaise en bois</option>
+                <option value="Table pliante">Table pliante</option>
+                <option value="Étagère métallique">Étagère métallique</option>
+                <option value="Autre">Autre</option>
+              </select>
             </div>
             <div>
-              <label for="quantity" class="block text-gray-700 font-medium mb-2">Quantité *</label>
-              <div class="relative">
-                <input type="number" id="quantity" min="1" required 
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 focus:outline-none input-focus transition"
-                  placeholder="Ex: 3">
-                <i class="fas fa-cubes absolute right-3 top-3.5 text-gray-400"></i>
-              </div>
+              <label for="quantity" class="block text-gray-700 mb-2">Quantité *</label>
+              <input type="number" id="quantity" min="1" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 input-focus" placeholder="3">
             </div>
           </div>
-          
           <div id="otherProductGroup" class="hidden mt-4">
-            <label for="otherProduct" class="block text-gray-700 font-medium mb-2">Précisez le produit</label>
-            <div class="relative">
-              <input type="text" id="otherProduct" 
-                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 focus:outline-none input-focus transition"
-                placeholder="Nom du produit">
-              <i class="fas fa-pen absolute right-3 top-3.5 text-gray-400"></i>
-            </div>
+            <label for="otherProduct" class="block text-gray-700 mb-2">Précisez le produit</label>
+            <input type="text" id="otherProduct" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 input-focus" placeholder="Nom du produit">
           </div>
         </div>
 
-        <!-- Delivery Info -->
+        <!-- Adresse -->
         <div class="mb-6">
-          <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-            <i class="fas fa-truck mr-2 text-emerald-600"></i> Livraison
-          </h2>
+          <h2 class="text-xl font-semibold text-gray-800 mb-4"><i class="fas fa-truck mr-2 text-emerald-600"></i> Livraison</h2>
+          <textarea id="address" rows="2" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 input-focus" placeholder="Ex: Alger, Hussein Dey, Rue des Martyrs"></textarea>
+        </div>
+
+        <!-- Paiement -->
+        <div class="mb-6">
+          <h2 class="text-xl font-semibold text-gray-800 mb-4"><i class="fas fa-credit-card mr-2 text-emerald-600"></i> Mode de paiement</h2>
           <div>
-            <label for="address" class="block text-gray-700 font-medium mb-2">Adresse *</label>
-            <div class="relative">
-              <textarea id="address" rows="2" required
-                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-emerald-500 focus:outline-none input-focus transition"
-                placeholder="Ex: Alger, Hussein Dey, Rue des Martyrs"></textarea>
-              <i class="fas fa-map-marker-alt absolute right-3 top-3.5 text-gray-400"></i>
-            </div>
+            <label><input type="radio" name="payment" value="Paiement à domicile" checked> Paiement à domicile</label>
+            <label class="ml-4"><input type="radio" name="payment" value="Carte bancaire"> Carte bancaire</label>
+            <label class="ml-4"><input type="radio" name="payment" value="EDahabia"> EDahabia</label>
           </div>
         </div>
 
-        <!-- Payment Method -->
-        <div class="mb-8">
-          <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-            <i class="fas fa-credit-card mr-2 text-emerald-600"></i> Mode de paiement
-          </h2>
-          <div class="grid grid-cols-3 gap-3">
-            <div>
-              <input type="radio" name="payment" id="cash" class="hidden peer" checked>
-              <label for="cash" class="flex flex-col items-center p-3 border border-gray-300 rounded-lg cursor-pointer peer-checked:border-emerald-500 peer-checked:bg-emerald-50 transition">
-                <i class="fas fa-home text-2xl text-gray-700 mb-2"></i>
-                <span class="text-sm">Paiement à domicile</span>
-              </label>
-            </div>
-            <div>
-              <input type="radio" name="payment" id="card" class="hidden peer">
-              <label for="card" class="flex flex-col items-center p-3 border border-gray-300 rounded-lg cursor-pointer peer-checked:border-emerald-500 peer-checked:bg-emerald-50 transition">
-                <i class="fas fa-credit-card text-2xl text-gray-700 mb-2"></i>
-                <span class="text-sm">Carte</span>
-              </label>
-            </div>
-            <div>
-              <input type="radio" name="payment" id="edahabia" class="hidden peer">
-              <label for="edahabia" class="flex flex-col items-center p-3 border border-gray-300 rounded-lg cursor-pointer peer-checked:border-emerald-500 peer-checked:bg-emerald-50 transition">
-                <i class="fas fa-mobile-alt text-2xl text-gray-700 mb-2"></i>
-                <span class="text-sm">EDahabia</span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center justify-center">
-          <i class="fas fa-paper-plane mr-2"></i> Envoyer ma commande
-        </button>
+        <button type="submit" class="w-full bg-emerald-600 text-white py-4 rounded-lg">Envoyer ma commande</button>
       </form>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-50 p-6 text-center text-gray-600 text-sm border-t">
-      <div class="flex justify-center space-x-4 mb-3">
-        <a href="#" class="text-gray-500 hover:text-emerald-600 transition"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="text-gray-500 hover:text-emerald-600 transition"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="text-gray-500 hover:text-emerald-600 transition"><i class="fab fa-whatsapp"></i></a>
-      </div>
-      <p>&copy; 2025 - Votre Entreprise. Tous droits réservés.</p>
-    </footer>
-  </div>
-
-  <!-- Success Modal (hidden by default) -->
-  <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-    <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 text-center">
-      <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-        <i class="fas fa-check-circle text-4xl text-emerald-600"></i>
-      </div>
-      <h3 class="text-2xl font-bold text-gray-800 mb-2">Commande confirmée !</h3>
-      <p class="text-gray-600 mb-6" id="confirmationText"></p>
-      <button id="closeModal" class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 px-6 rounded-lg transition">
-        Fermer
-      </button>
     </div>
   </div>
 
   <script>
-    // Toggle other product field
     const productSelect = document.getElementById("product");
-    const otherProductGroup = document.getElementById("otherProductGroup");
-    
+    const otherGroup = document.getElementById("otherProductGroup");
+
     productSelect.addEventListener("change", () => {
-      otherProductGroup.classList.toggle("hidden", productSelect.value !== "Autre");
+      otherGroup.classList.toggle("hidden", productSelect.value !== "Autre");
     });
 
-    // Form submission
-    document.getElementById("orderForm").addEventListener("submit", function(e) {
+    document.getElementById("orderForm").addEventListener("submit", async function(e) {
       e.preventDefault();
-      
-      // Animate progress bar
-      document.getElementById("progressBar").classList.add("w-full");
-      
-      // Get form values
-      const now = new Date();
       const selectedProduct = productSelect.value === "Autre" 
-        ? document.getElementById("otherProduct").value.trim() || "Produit personnalisé"
+        ? document.getElementById("otherProduct").value.trim() 
         : productSelect.value;
-      
-      const paymentMethod = document.querySelector('input[name="payment"]:checked').id;
-      const paymentLabels = {
-        cash: 'Paiement à domicile',
-        card: 'Carte bancaire',
-        edahabia: 'EDahabia'
-      };
-      const paymentIcons = {
-        cash: '<i class="fas fa-home mr-1"></i>',
-        card: '<i class="fas fa-credit-card mr-1"></i>',
-        edahabia: '<i class="fas fa-mobile-alt mr-1"></i>'
-      };
-      
+
       const order = {
-        id: "CMD-" + now.getFullYear() + String(now.getTime()).slice(-5),
-        date: now.toLocaleString('fr-FR'),
         customer: document.getElementById("customer").value.trim(),
         product: selectedProduct,
         quantity: document.getElementById("quantity").value,
         phone: document.getElementById("phone").value.trim(),
-        address: document.getElementById("address").value.trim() || "Non fournie",
-        payment: paymentMethod
+        address: document.getElementById("address").value.trim(),
+        payment: document.querySelector('input[name="payment"]:checked').value
       };
 
-      // Save to localStorage
-      let orders = JSON.parse(localStorage.getItem("orders")) || [];
-      orders.push(order);
-      localStorage.setItem("orders", JSON.stringify(orders));
-
-      // Show confirmation modal
-      const confirmationText = `
-        Merci <strong>${order.customer}</strong> !<br><br>
-        Votre commande <strong>#${order.id}</strong> a été enregistrée.<br><br>
-        <small class="text-gray-500">
-          ${paymentIcons[paymentMethod]} ${paymentLabels[paymentMethod]} • 
-          ${order.quantity} x ${order.product}
-        </small>
-      `;
-      
-      document.getElementById("confirmationText").innerHTML = confirmationText;
-      document.getElementById("successModal").classList.remove("hidden");
-      
-      // Reset form
-      this.reset();
-      otherProductGroup.classList.add("hidden");
-    });
-
-    // Close modal
-    document.getElementById("closeModal").addEventListener("click", () => {
-      document.getElementById("successModal").classList.add("hidden");
-      document.getElementById("progressBar").classList.remove("w-full");
+      const res = await fetch("http://localhost/save_order.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(order)
+      });
+      const data = await res.json();
+      if (data.status === "success") {
+        alert("✅ Commande enregistrée !");
+        this.reset();
+        otherGroup.classList.add("hidden");
+      } else {
+        alert("❌ Erreur: " + data.message);
+      }
     });
   </script>
 </body>
